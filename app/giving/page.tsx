@@ -2,8 +2,9 @@
 
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
-import { Heart, Coins, Landmark, Calendar, Send, MessageSquare, ArrowDown } from "lucide-react"
-
+import { Heart, Coins, Landmark, Calendar, Send, MessageSquare, ArrowDown, ArrowUpRight } from "lucide-react"
+import Link from "next/link"
+import { cn } from "@/lib/utils"
 
 const givingMethods = [
     {
@@ -37,139 +38,156 @@ const givingMethods = [
 
 export default function GivingPage() {
     return (
-        <main className="min-h-screen">
-            <section className="relative h-[90vh] min-h-[700px] flex items-center justify-center overflow-hidden">
+        <main className="bg-background">
+            {/* Hero Section - The Sacrificial Pillar */}
+            <section className="relative min-h-[90vh] flex flex-col justify-end overflow-hidden pt-40 pb-20">
+                {/* Background Canvas */}
                 <div className="absolute inset-0 z-0">
                     <img
                         src="/pastor and congregation.jpg"
                         alt="Giving at HGCC"
-                        className="w-full h-full object-cover scale-110 animate-subtle-zoom"
+                        className="w-full h-full object-cover grayscale opacity-40 scale-105 animate-[subtle-zoom_20s_infinite_alternate]"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-br from-primary/90 via-primary/70 to-black/80" />
-                    <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_transparent_0%,_rgba(0,0,0,0.4)_100%)]" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+                    <div className="absolute inset-0 bg-black/40" />
                 </div>
 
-                <div className="container mx-auto px-4 relative z-10">
-                    <div className="max-w-4xl mx-auto text-center">
-                        <div className="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 mb-8 animate-fade-in shadow-xl">
-                            <Heart className="h-5 w-5 text-secondary" />
-                            <span className="text-sm font-semibold tracking-wide text-white uppercase">Sacrificial Service</span>
+                {/* Massive Watermark */}
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none z-10 overflow-hidden">
+                    <h2 className="text-[20vw] font-black leading-none text-primary/[0.03] tracking-tighter uppercase whitespace-nowrap font-sans">
+                        SACRIFICE
+                    </h2>
+                </div>
+
+                <div className="container mx-auto px-8 relative z-20">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+                        <div className="lg:col-span-8 space-y-10">
+                            <div className="space-y-4">
+                                <div className="flex items-center gap-4">
+                                    <span className="h-[1px] w-12 bg-primary" />
+                                    <span className="text-xs font-bold tracking-[0.5em] text-primary uppercase">HONORING GOD</span>
+                                </div>
+                                <h1 className="text-6xl md:text-8xl lg:text-9xl font-black font-[family-name:var(--font-playfair)] text-white leading-[0.9] tracking-tight">
+                                    Giving & <br />
+                                    <span className="italic text-primary">Support.</span>
+                                </h1>
+                            </div>
+
+                            <div className="flex flex-col sm:flex-row gap-6">
+                                <button
+                                    onClick={() => document.getElementById('giving-methods')?.scrollIntoView({ behavior: 'smooth' })}
+                                    className="bg-primary text-primary-foreground px-12 py-5 text-xs font-bold tracking-[0.3em] uppercase hover:bg-white hover:text-black transition-all duration-500 rounded-none shadow-2xl"
+                                >
+                                    GIVE NOW
+                                </button>
+                            </div>
                         </div>
 
-                        <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold font-[family-name:var(--font-playfair)] mb-8 text-white leading-[1.1] tracking-tight drop-shadow-2xl">
-                            Giving & <span className="text-secondary italic">Support</span>
-                        </h1>
-
-                        <div className="relative mb-12 max-w-2xl mx-auto">
-                            <p className="text-2xl md:text-3xl leading-relaxed text-white/90 font-light italic">
-                                "{
+                        <div className="lg:col-span-4 lg:text-right">
+                            <div className="space-y-6">
+                                <p className="text-sm md:text-base font-light text-white/70 leading-relaxed italic border-l lg:border-l-0 lg:border-r border-primary/40 pl-8 lg:pl-0 lg:pr-8">
                                     "Every man according as he purposeth in his heart, so let him give; not grudgingly, or of necessity: for God loveth a cheerful giver."
-                                }"
-                            </p>
-                            <p className="mt-4 text-lg font-medium tracking-widest text-secondary uppercase opacity-80">- 2 Corinthians 9:7</p>
-                        </div>
-
-                        <div className="flex flex-col sm:flex-row gap-6 justify-center items-center">
-                            <Button
-                                size="lg"
-                                className="bg-secondary hover:bg-secondary/90 text-secondary-foreground font-bold px-10 py-7 text-lg rounded-full shadow-2xl transition-all hover:scale-105 active:scale-95 group"
-                                onClick={() => document.getElementById('giving-methods')?.scrollIntoView({ behavior: 'smooth' })}
-                            >
-                                Give Now
-                                <ArrowDown className="ml-2 h-5 w-5 group-hover:translate-y-1 transition-transform" />
-                            </Button>
+                                </p>
+                                <p className="text-[10px] tracking-[0.3em] font-bold text-primary uppercase">2 CORINTHIANS 9:7</p>
+                            </div>
                         </div>
                     </div>
-                </div>
-
-                {/* Decorative Elements */}
-                <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-background to-transparent z-10" />
-                <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 animate-bounce">
-                    <div className="w-1 h-12 rounded-full bg-gradient-to-b from-white/50 to-transparent" />
                 </div>
             </section>
 
-            {/* Giving Options */}
-            <section id="giving-methods" className="py-32 relative scroll-mt-20">
-                <div className="container mx-auto px-4">
-                    <div className="text-center mb-12">
-                        <h2 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-playfair)] mb-4">
-                            Ways to Give
-                        </h2>
-                        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                            {"Thank you for your generosity. Your support helps us spread the gospel and care for the community."}
-                        </p>
+            {/* Giving Options - The Grid of Honor */}
+            <section id="giving-methods" className="py-32 relative bg-background">
+                <div className="container mx-auto px-8 relative z-10">
+                    <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+                        <div className="space-y-4">
+                            <h2 className="text-xs font-bold tracking-[0.6em] text-primary uppercase">CHANNELS</h2>
+                            <h3 className="text-4xl md:text-6xl font-black font-[family-name:var(--font-playfair)] tracking-tighter uppercase">WAYS TO GIVE.</h3>
+                        </div>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                        {givingMethods.map((method) => (
-                            <Card key={method.title} className="group hover:shadow-lg transition-transform hover:-translate-y-1">
-                                <CardContent className="p-8">
-                                    <div className="w-14 h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-6 group-hover:bg-primary/20 transition-colors">
-                                        <method.icon className="h-7 w-7 text-primary" />
-                                    </div>
-                                    <h3 className="text-2xl font-bold mb-4">{method.title}</h3>
-                                    <p className="text-muted-foreground mb-6 leading-relaxed">{method.description}</p>
-                                    <div className="space-y-4">
-                                        {method.details.map((detail, idx) => (
-                                            <div key={idx} className="bg-muted/50 p-4 rounded-lg">
-                                                <div className="text-xs font-semibold text-primary uppercase tracking-wider mb-1">
-                                                    {detail.label}
-                                                </div>
-                                                <div className="text-foreground font-medium">{detail.value}</div>
-                                            </div>
-                                        ))}
-                                    </div>
-                                </CardContent>
-                            </Card>
+                    <div className="grid grid-cols-1 md:grid-cols-3 border border-border">
+                        {givingMethods.map((method, i) => (
+                            <div key={method.title} className={cn(
+                                "p-12 space-y-8 group hover:bg-foreground/[0.02] transition-colors duration-700",
+                                i < 2 ? "border-b md:border-b-0 md:border-r border-border" : ""
+                            )}>
+                                <div className="w-16 h-16 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500">
+                                    <method.icon className="h-6 w-6" />
+                                </div>
+                                <div className="space-y-4">
+                                    <h4 className="text-2xl font-bold font-[family-name:var(--font-playfair)] tracking-tight">{method.title}</h4>
+                                    <p className="text-sm font-light leading-relaxed text-muted-foreground">{method.description}</p>
+                                </div>
+                                <div className="space-y-4">
+                                    {method.details.map((detail, idx) => (
+                                        <div key={idx} className="border-l border-border pl-6 space-y-1">
+                                            <p className="text-[10px] font-bold tracking-widest text-primary uppercase opacity-60">{detail.label}</p>
+                                            <p className="text-sm font-bold tracking-tight text-foreground">{detail.value}</p>
+                                        </div>
+                                    ))}
+                                </div>
+                            </div>
                         ))}
                     </div>
                 </div>
             </section>
 
-            {/* Impact Section */}
-            <section className="py-20 bg-muted/30">
-                <div className="container mx-auto px-4">
-                    <div className="max-w-4xl mx-auto text-center">
-                        <h2 className="text-3xl font-bold font-[family-name:var(--font-playfair)] mb-8">Your Impact</h2>
-                        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                            <div className="p-6 bg-background rounded-xl shadow-sm border border-border/50">
-                                <div className="text-3xl font-bold text-primary mb-2">Community</div>
-                                <p className="text-muted-foreground text-sm">Providing food, clothing, and support to families in need.</p>
+            {/* Impact - The Fruit of Luminosity */}
+            <section className="py-40 bg-foreground text-background relative overflow-hidden">
+                <div className="absolute inset-0 opacity-[0.03] bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+                <div className="container mx-auto px-8 relative z-10">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+                        <div className="lg:col-span-4 space-y-6">
+                            <h2 className="text-xs font-bold tracking-[0.6em] text-primary uppercase">OUTCOME</h2>
+                            <h3 className="text-4xl md:text-5xl font-black font-[family-name:var(--font-playfair)] tracking-tighter leading-none">
+                                YOUR <br /> IMPACT.
+                            </h3>
+                            <p className="text-sm font-light leading-relaxed text-background/50">
+                                Your generosity is the fuel that causes nations to come to our righteousness.
+                            </p>
+                        </div>
+
+                        <div className="lg:col-span-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+                            <div className="p-12 border border-white/10 space-y-6 bg-white/[0.02]">
+                                <h4 className="text-2xl font-bold font-[family-name:var(--font-playfair)] tracking-tight text-white">Community</h4>
+                                <p className="text-sm font-light leading-relaxed text-white/40">Providing food, clothing, and essential support to families in need across Lugbe and beyond.</p>
+                                <div className="h-[1px] w-12 bg-primary" />
                             </div>
-                            <div className="p-6 bg-background rounded-xl shadow-sm border border-border/50">
-                                <div className="text-3xl font-bold text-primary mb-2">Spiritual</div>
-                                <p className="text-muted-foreground text-sm">Supporting gospel outreaches and spiritual development programs.</p>
+                            <div className="p-12 border border-white/10 space-y-6 bg-white/[0.02] mt-12">
+                                <h4 className="text-2xl font-bold font-[family-name:var(--font-playfair)] tracking-tight text-white">Spiritual</h4>
+                                <p className="text-sm font-light leading-relaxed text-white/40">Supporting gospel outreaches and spiritual development programs that draw souls to Christ.</p>
+                                <div className="h-[1px] w-12 bg-primary" />
                             </div>
                         </div>
                     </div>
                 </div>
             </section>
 
-            {/* CTA / Contact */}
-            <section className="py-20">
-                <div className="container mx-auto px-4">
-                    <div className="max-w-3xl mx-auto text-center bg-primary rounded-3xl p-12 text-primary-foreground shadow-2xl relative overflow-hidden">
-                        <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
-                        <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
-
-                        <h2 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-playfair)] mb-6">
-                            Need Assistance?
-                        </h2>
-                        <p className="text-lg opacity-90 mb-8 leading-relaxed">
-                            If you have questions about giving, partnerships, or special donations, our finance team is here to help.
+            {/* Assistance - The Support Bridge */}
+            <section className="py-32 bg-background">
+                <div className="container mx-auto px-8">
+                    <div className="max-w-4xl mx-auto border border-border p-16 lg:p-24 text-center space-y-12 relative overflow-hidden group">
+                        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/50 to-transparent" />
+                        <div className="space-y-4">
+                            <h2 className="text-xs font-bold tracking-[0.5em] text-primary uppercase">QUESTIONS?</h2>
+                            <h3 className="text-4xl md:text-5xl font-black font-[family-name:var(--font-playfair)] tracking-tighter">NEED ASSISTANCE.</h3>
+                        </div>
+                        <p className="text-sm font-light leading-relaxed text-muted-foreground max-w-lg mx-auto">
+                            If you have questions about giving, partnerships, or special donations, our finance team is here to guide you.
                         </p>
-                        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                            <Button size="lg" variant="secondary" className="font-semibold" asChild>
-                                <a href="mailto:hgccww@gmail.com">
-                                    <Send className="mr-2 h-4 w-4" /> Email Us
-                                </a>
-                            </Button>
-                            <Button size="lg" variant="outline" className="border-primary-foreground/30 hover:bg-white/10 text-white" asChild>
-                                <a href="tel:09138522984">
-                                    <MessageSquare className="mr-2 h-4 w-4" /> Call Finance
-                                </a>
-                            </Button>
+                        <div className="flex flex-col sm:flex-row gap-6 justify-center">
+                            <a
+                                href="mailto:hgccww@gmail.com"
+                                className="flex items-center justify-center gap-3 bg-foreground text-background px-10 py-5 text-xs font-bold tracking-[0.3em] uppercase hover:bg-primary hover:text-primary-foreground transition-all duration-500 rounded-none"
+                            >
+                                <Send className="h-4 w-4" /> EMAIL US
+                            </a>
+                            <a
+                                href="tel:09138522984"
+                                className="flex items-center justify-center gap-3 border border-border px-10 py-5 text-xs font-bold tracking-[0.3em] uppercase hover:bg-foreground hover:text-background transition-all duration-500 rounded-none"
+                            >
+                                <MessageSquare className="h-4 w-4" /> CALL FINANCE
+                            </a>
                         </div>
                     </div>
                 </div>

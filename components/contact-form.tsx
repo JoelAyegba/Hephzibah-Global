@@ -6,6 +6,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import emailjs from 'emailjs-com'
+import { cn } from "@/lib/utils"
 
 export function ContactForm() {
     const [formData, setFormData] = useState({
@@ -22,9 +23,6 @@ export function ContactForm() {
 
     useEffect(() => {
         const publicKey = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || '';
-        console.log('EmailJS Public Key loaded:', publicKey ? 'Yes' : 'No');
-        console.log('Service ID loaded:', process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID ? 'Yes' : 'No');
-        console.log('Template ID loaded:', process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID ? 'Yes' : 'No');
         emailjs.init(publicKey);
     }, []);
 
@@ -40,14 +38,8 @@ export function ContactForm() {
         const serviceId = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || '';
         const templateId = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || '';
 
-        console.log('Attempting to send email with:', {
-            serviceId: serviceId ? 'Present' : 'Missing',
-            templateId: templateId ? 'Present' : 'Missing',
-            formData: formData
-        });
-
         try {
-            const result = await emailjs.send(
+            await emailjs.send(
                 serviceId,
                 templateId,
                 {
@@ -61,7 +53,6 @@ export function ContactForm() {
                 }
             );
 
-            console.log('EmailJS Success:', result);
             setSubmissionStatus("success");
             setFormData({
                 firstName: "",
@@ -73,72 +64,114 @@ export function ContactForm() {
             });
         } catch (error) {
             setSubmissionStatus("error");
-            console.error('EmailJS Full Error:', error);
-            console.error('Error details:', JSON.stringify(error, null, 2));
+            console.error('EmailJS Error:', error);
         } finally {
             setIsSubmitting(false);
         }
     };
 
     return (
-        <div className="bg-white p-8 rounded-lg shadow-lg">
-            <h2 className="text-3xl font-bold font-[family-name:var(--font-playfair)] mb-6">Reach Out to Us</h2>
-            <p className="text-muted-foreground mb-6">
-                Whether you have a prayer request, a testimony, or an inquiry, we are here to listen.
-            </p>
-            <form className="space-y-6" onSubmit={handleSubmit}>
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <div className="space-y-2">
-                        <Label htmlFor="firstName">First Name *</Label>
-                        <Input id="firstName" placeholder="Enter your first name" required value={formData.firstName} onChange={handleChange} />
+        <div className="space-y-10">
+            <div className="space-y-4">
+                <p className="text-sm font-light text-muted-foreground leading-relaxed">
+                    Whether you have a prayer request, a testimony, or an inquiry, we are here to listen.
+                    Every message is a sacred trust.
+                </p>
+            </div>
+
+            <form className="space-y-8" onSubmit={handleSubmit}>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="space-y-3">
+                        <Label htmlFor="firstName" className="text-[10px] font-bold tracking-widest uppercase text-muted-foreground">First Name *</Label>
+                        <Input
+                            id="firstName"
+                            required
+                            value={formData.firstName}
+                            onChange={handleChange}
+                            className="rounded-none border-0 border-b border-border bg-transparent px-0 focus-visible:ring-0 focus-visible:border-primary transition-all placeholder:text-muted-foreground/30 font-light"
+                        />
                     </div>
-                    <div className="space-y-2">
-                        <Label htmlFor="lastName">Last Name *</Label>
-                        <Input id="lastName" placeholder="Enter your last name" required value={formData.lastName} onChange={handleChange} />
+                    <div className="space-y-3">
+                        <Label htmlFor="lastName" className="text-[10px] font-bold tracking-widest uppercase text-muted-foreground">Last Name *</Label>
+                        <Input
+                            id="lastName"
+                            required
+                            value={formData.lastName}
+                            onChange={handleChange}
+                            className="rounded-none border-0 border-b border-border bg-transparent px-0 focus-visible:ring-0 focus-visible:border-primary transition-all placeholder:text-muted-foreground/30 font-light"
+                        />
                     </div>
                 </div>
 
-                <div className="space-y-2">
-                    <Label htmlFor="email">Email Address *</Label>
-                    <Input id="email" type="email" placeholder="your.email@example.com" required value={formData.email} onChange={handleChange} />
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div className="space-y-3">
+                        <Label htmlFor="email" className="text-[10px] font-bold tracking-widest uppercase text-muted-foreground">Email Address *</Label>
+                        <Input
+                            id="email"
+                            type="email"
+                            required
+                            value={formData.email}
+                            onChange={handleChange}
+                            className="rounded-none border-0 border-b border-border bg-transparent px-0 focus-visible:ring-0 focus-visible:border-primary transition-all placeholder:text-muted-foreground/30 font-light"
+                        />
+                    </div>
+                    <div className="space-y-3">
+                        <Label htmlFor="phone" className="text-[10px] font-bold tracking-widest uppercase text-muted-foreground">Phone Number</Label>
+                        <Input
+                            id="phone"
+                            type="tel"
+                            value={formData.phone}
+                            onChange={handleChange}
+                            className="rounded-none border-0 border-b border-border bg-transparent px-0 focus-visible:ring-0 focus-visible:border-primary transition-all placeholder:text-muted-foreground/30 font-light"
+                        />
+                    </div>
                 </div>
 
-                <div className="space-y-2">
-                    <Label htmlFor="phone">Phone Number</Label>
-                    <Input id="phone" type="tel" placeholder="08057981311" value={formData.phone} onChange={handleChange} />
-                </div>
-
-                <div className="space-y-2">
-                    <Label htmlFor="subject">Subject *</Label>
+                <div className="space-y-3">
+                    <Label htmlFor="subject" className="text-[10px] font-bold tracking-widest uppercase text-muted-foreground">Subject *</Label>
                     <select
                         id="subject"
-                        className="flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                        className="flex w-full rounded-none border-0 border-b border-border bg-transparent px-0 py-2 text-sm focus:outline-none focus:border-primary transition-all font-light"
                         required
                         value={formData.subject}
                         onChange={handleChange}
                     >
-                        <option value="">Select a subject</option>
-                        <option value="prayer">Prayer Request</option>
-                        <option value="testimony">Share a Testimony</option>
-                        <option value="counseling">Counseling Appointment</option>
-                        <option value="membership">Membership Inquiry</option>
-                        <option value="general">General Inquiry</option>
+                        <option value="" className="bg-background">Select a subject</option>
+                        <option value="prayer" className="bg-background">Prayer Request</option>
+                        <option value="testimony" className="bg-background">Share a Testimony</option>
+                        <option value="counseling" className="bg-background">Counseling Appointment</option>
+                        <option value="membership" className="bg-background">Membership Inquiry</option>
+                        <option value="general" className="bg-background">General Inquiry</option>
                     </select>
                 </div>
 
-                <div className="space-y-2">
-                    <Label htmlFor="message">Message *</Label>
-                    <Textarea id="message" placeholder="How can we pray for you or help you?" rows={6} required value={formData.message} onChange={handleChange} />
+                <div className="space-y-3">
+                    <Label htmlFor="message" className="text-[10px] font-bold tracking-widest uppercase text-muted-foreground">Message *</Label>
+                    <Textarea
+                        id="message"
+                        rows={4}
+                        required
+                        value={formData.message}
+                        onChange={handleChange}
+                        className="rounded-none border-0 border-b border-border bg-transparent px-0 focus-visible:ring-0 focus-visible:border-primary transition-all placeholder:text-muted-foreground/30 font-light resize-none"
+                    />
                 </div>
 
-                <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
-                    {isSubmitting ? "Sending..." : "Send Message"}
-                </Button>
+                <div className="pt-4">
+                    <button
+                        type="submit"
+                        className="bg-primary text-primary-foreground px-12 py-5 text-xs font-bold tracking-[0.4em] uppercase hover:bg-black hover:text-white transition-all duration-500 rounded-none w-full md:w-auto"
+                        disabled={isSubmitting}
+                    >
+                        {isSubmitting ? "TRANSMITTING..." : "SEND PETITION"}
+                    </button>
+                </div>
+
                 {submissionStatus === "success" && (
-                    <p className="text-green-500">Message sent successfully! We will be in touch.</p>
+                    <p className="text-[10px] font-bold tracking-widest uppercase text-primary animate-pulse">PETITION RECEIVED. WE WILL RESPOND SHORTLY.</p>
                 )}
                 {submissionStatus === "error" && (
-                    <p className="text-red-500">Failed to send message. Please try again.</p>
+                    <p className="text-[10px] font-bold tracking-widest uppercase text-red-500">TRANSMISSION FAILED. PLEASE TRY AGAIN.</p>
                 )}
             </form>
         </div>

@@ -1,11 +1,12 @@
 import { Card, CardContent } from "@/components/ui/card"
-import { Target, Eye, Users, FileText, Globe, Heart } from "lucide-react"
+import { Target, Eye, Users, FileText, Globe, Heart, ArrowRight } from "lucide-react"
+import { cn } from "@/lib/utils"
 
 export const metadata = {
-  title: "About Us - Hephzibah Global Christian Centre",
+  title: "Our Story - Hephzibah Global Christian Centre",
   description: "Learn about Hephzibah Global Christian Centre (HGCC), our history, vision, mission, and our founder Pastor Idoko Idu Idachaba.",
   openGraph: {
-    title: "About Us - Hephzibah Global Christian Centre",
+    title: "Our Story - Hephzibah Global Christian Centre",
     description: "Learn about Hephzibah Global Christian Centre (HGCC), our history, vision, mission, and our founder Pastor Idoko Idu Idachaba.",
     image: "/pastor and congregation.jpg",
   },
@@ -13,131 +14,174 @@ export const metadata = {
 
 export default function AboutPage() {
   return (
-    <main>
-      {/* Our Story / History */}
-      <section className="py-20 bg-white overflow-hidden">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="order-2 lg:order-1">
-              <div className="relative">
-                <div className="absolute -top-4 -left-4 w-32 h-32 bg-primary/10 rounded-lg -z-10" />
+    <main className="bg-background">
+      {/* Hero / History - The Narrative Pillar */}
+      <section className="relative pt-40 pb-32 overflow-hidden border-b border-border">
+        {/* Watermark */}
+        <div className="absolute top-20 right-[-5%] pointer-events-none select-none z-0">
+          <h2 className="text-[20vw] font-black leading-none text-foreground/[0.03] tracking-tight uppercase whitespace-nowrap font-sans">
+            HISTORY
+          </h2>
+        </div>
+
+        <div className="container mx-auto px-8 relative z-10">
+          <div className="flex flex-col lg:flex-row gap-20 items-center">
+            <div className="w-full lg:w-1/2 space-y-12">
+              <div className="space-y-4">
+                <div className="flex items-center gap-4">
+                  <span className="h-[1px] w-12 bg-primary" />
+                  <span className="text-xs font-bold tracking-[0.6em] text-primary uppercase">SINCE 2022</span>
+                </div>
+                <h1 className="text-5xl md:text-7xl font-black font-[family-name:var(--font-playfair)] tracking-tighter leading-none">
+                  THE RADIANCE <br />
+                  OF OUR RISING.
+                </h1>
+              </div>
+
+              <div className="space-y-6 text-sm md:text-base font-light text-muted-foreground leading-relaxed">
+                <p>
+                  Hephzibah Global Christian Centre (HGCC) was birthed from a divine mandate given to <span className="text-foreground font-bold italic">Pastor Idoko Idu Idachaba</span>.
+                  Inaugurated on <span className="text-primary font-bold tracking-widest">6TH AUGUST 2022</span>, we began as a small fire that has since grown into a global beacon of righteousness.
+                </p>
+                <p className="border-l-2 border-primary pl-10 italic">
+                  "We are a faith-preaching community grounded in the truth of Isaiah 62:2-4, committed to making the Word of God real. Our vision is simple yet profound: to draw nations to righteousness."
+                </p>
+              </div>
+            </div>
+
+            <div className="w-full lg:w-1/2 relative group">
+              <div className="absolute -inset-4 border border-primary/20 pointer-events-none group-hover:-inset-2 transition-all duration-700" />
+              <div className="relative overflow-hidden rounded-none border border-white/5 shadow-2xl">
                 <img
                   src="/pastor and congregation.jpg"
                   alt="HGCC Congregation"
-                  className="rounded-lg shadow-lg w-full h-auto"
+                  className="w-full h-auto grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105"
                 />
-              </div>
-            </div>
-            <div className="order-1 lg:order-2">
-              <h2 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-playfair)] mb-6 text-foreground">
-                Our History
-              </h2>
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
-                <p>
-                  Hephzibah Global Christian Centre (HGCC) was founded by <strong>Pastor Idoko Idu Idachaba</strong> in Lugbe, Abuja. Since our inaugural service on <strong>6th August 2022</strong> and our first Sunday service on <strong>7th August 2022</strong>, the church has grown into a vibrant community of believers committed to spiritual growth, worship, and outreach.
-                </p>
-                <p>
-                  We are a faith-preaching community grounded in the truth of <em>Isaiah 62:2-4</em>, committed to making the Word of God real in the lives of His people. Our vision is pursued with unwavering passion: to draw nations to righteousness and kings to behold God’s salvation and glory.
-                </p>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Vision & Mission */}
-      <section className="py-20 bg-muted">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      {/* Vision & Mission - The Pillars of Truth */}
+      <section className="py-32 bg-foreground text-background relative flex justify-center">
+        <div className="container mx-auto px-8 relative z-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/10 border border-white/10">
             {/* Vision */}
-            <Card className="h-full">
-              <CardContent className="p-8 h-full flex flex-col">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                  <Eye className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-2xl font-bold font-[family-name:var(--font-playfair)] mb-4">Vision Statement</h3>
-                <p className="text-muted-foreground leading-relaxed italic mb-4">
-                  "To make the word of God in our lives real thereby causing nations to come to our righteousness and luminance where kings shall behold our salvation and glory."
+            <div className="p-16 space-y-8 bg-foreground">
+              <div className="w-16 h-16 border border-primary/20 flex items-center justify-center text-primary group">
+                <Eye className="h-6 w-6" />
+              </div>
+              <div className="space-y-4">
+                <h3 className="text-xs font-bold tracking-[0.5em] text-primary uppercase">VISION</h3>
+                <p className="text-2xl md:text-3xl font-bold font-[family-name:var(--font-playfair)] leading-snug tracking-tight text-white italic">
+                  "To make the word of God in our lives real thereby causing nations to come to our righteousness and luminance."
                 </p>
-                <p className="text-sm font-semibold text-primary mt-auto">(Isaiah 62:2 / Matthew 5:14)</p>
-              </CardContent>
-            </Card>
+              </div>
+              <span className="text-[10px] font-bold tracking-[0.3em] text-white/40 uppercase">ISAIAH 62:2 / MATTHEW 5:14</span>
+            </div>
 
             {/* Mission */}
-            <Card className="h-full">
-              <CardContent className="p-8 h-full flex flex-col">
-                <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                  <Target className="h-6 w-6 text-primary" />
-                </div>
-                <h3 className="text-2xl font-bold font-[family-name:var(--font-playfair)] mb-4">Mission Statement</h3>
-                <p className="text-muted-foreground leading-relaxed italic mb-4">
-                  "To impact the word, gift, and the spirit of faith on all the tribes of the earth through the knowledge of God given to us, therefore subduing the kingdom of Satan on earth, and above all showing the tribes of the world the way of salvation."
+            <div className="p-16 space-y-8 bg-foreground">
+              <div className="w-16 h-16 border border-primary/20 flex items-center justify-center text-primary">
+                <Target className="h-6 w-6" />
+              </div>
+              <div className="space-y-4">
+                <h3 className="text-xs font-bold tracking-[0.5em] text-primary uppercase">MISSION</h3>
+                <p className="text-sm font-light leading-relaxed text-white/60">
+                  To impact the word, gift, and the spirit of faith on all the tribes of the earth through the knowledge of God given to us, subduing the kingdom of Satan and showing the world the way of salvation.
                 </p>
-                <p className="text-sm font-semibold text-primary mt-auto">(Hebrews 11)</p>
-              </CardContent>
-            </Card>
+              </div>
+              <span className="text-[10px] font-bold tracking-[0.3em] text-white/40 uppercase">HEBREWS 11</span>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Corporate Objectives */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold font-[family-name:var(--font-playfair)] mb-12 text-center">Corporate Objectives</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {[
-              "To establish believers with the pure knowledge of God until they grow into the fullness of the measure of the stature of Christ.",
-              "To expose every nation of the world to the person of the Holy Spirit and guide them into enjoying the fullness of His ministry.",
-              "To create an understanding to all the tribes of this world that love is greater than religion and Christianity is demonstrating power of Christ and not a religion.",
-              "To edify and furnish believers to preach the Good News of holistic salvation in Jesus Christ.",
-              "To make every race of the world encounter the Lord Jesus Christ and establish an understanding of His birth, His assignment on earth, His death, and resurrection."
-            ].map((obj, index) => (
-              <Card key={index} className="border-none shadow-md hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="mt-1 bg-primary/10 p-2 rounded-full">
-                      <Target className="h-4 w-4 text-primary" />
-                    </div>
-                    <p className="text-muted-foreground text-sm leading-relaxed">{obj}</p>
+      <section className="py-32 bg-background relative overflow-hidden">
+        <div className="container mx-auto px-8">
+          <div className="flex flex-col lg:flex-row gap-16">
+            <div className="lg:w-1/3 space-y-4">
+              <h2 className="text-xs font-bold tracking-[0.5em] text-primary uppercase">GOALS</h2>
+              <h3 className="text-4xl md:text-5xl font-black font-[family-name:var(--font-playfair)] tracking-tighter leading-none">
+                CORPORATE <br /> OBJECTIVES.
+              </h3>
+            </div>
+
+            <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-4">
+              {[
+                "Establish believers with the pure knowledge of God until they grow into the fullness of Christ.",
+                "Expose every nation to the person of the Holy Spirit and His transformative ministry.",
+                "Demonstrate that love is greater than religion through the power of Christ.",
+                "Edify believers to preach the Good News of holistic salvation.",
+                "Make every race encounter the Lord Jesus Christ and His resurrection life."
+              ].map((obj, i) => (
+                <div key={i} className="p-10 border border-border group hover:border-primary/50 transition-all duration-500">
+                  <div className="flex items-center gap-4 mb-6">
+                    <span className="text-[10px] font-black text-primary/30 group-hover:text-primary transition-colors">0{i + 1}</span>
+                    <div className="h-[1px] w-8 bg-border group-hover:w-12 transition-all group-hover:bg-primary" />
                   </div>
-                </CardContent>
-              </Card>
-            ))}
+                  <p className="text-sm font-light leading-relaxed text-muted-foreground group-hover:text-foreground transition-colors">{obj}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
 
-      {/* Founder's Biography */}
-      <section className="py-20 bg-primary/5">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col lg:flex-row items-center gap-12">
-            <div className="w-full lg:w-1/3 flex justify-center">
-              <img
-                src="/Pastor potrait.jpeg"
-                alt="Pastor Idoko Idu Idachaba"
-                className="rounded-xl shadow-2xl w-full max-w-sm object-cover"
-              />
+      {/* Founder's Biography - The Living Testament */}
+      <section className="py-40 bg-[#050505] text-white relative">
+        <div className="absolute top-0 right-0 w-1/3 h-full bg-primary/5 -skew-x-12 z-0" />
+        <div className="container mx-auto px-8 relative z-10">
+          <div className="flex flex-col lg:flex-row items-center gap-20">
+            <div className="w-full lg:w-2/5 relative group">
+              <div className="absolute -top-10 -left-10 text-[10rem] font-black font-sans text-white/[0.03] pointer-events-none select-none">
+                IDOKO
+              </div>
+              <div className="relative border-2 border-white/5 p-4 z-10">
+                <img
+                  src="/Pastor potrait.jpeg"
+                  alt="Pastor Idoko Idu Idachaba"
+                  className="w-full h-auto grayscale hover:grayscale-0 transition-all duration-1000"
+                />
+              </div>
             </div>
-            <div className="w-full lg:w-2/3">
-              <h2 className="text-3xl font-bold font-[family-name:var(--font-playfair)] mb-2">
-                Meet Our Lead Pastor
-              </h2>
-              <h3 className="text-xl text-primary font-semibold mb-6">Pastor Idoko Idu Idachaba</h3>
 
-              <div className="space-y-4 text-muted-foreground leading-relaxed">
+            <div className="w-full lg:w-3/5 space-y-12">
+              <div className="space-y-4">
+                <h2 className="text-xs font-bold tracking-[0.6em] text-primary uppercase">THE VESSEL</h2>
+                <h3 className="text-5xl md:text-6xl font-black font-[family-name:var(--font-playfair)] tracking-tighter leading-none">
+                  PASTOR IDOKO <br /> IDU IDACHABA.
+                </h3>
+              </div>
+
+              <div className="space-y-6 text-sm md:text-base font-light text-white/50 leading-loose max-w-2xl">
                 <p>
-                  Pastor Idoko Idu Idachaba is the Lead Pastor of HGCC. Born on <strong>20th October 1980</strong> in Kano State, Nigeria, and hailing from Idah, Kogi State, Pastor Idoko is blessed with a loving family, his wife <strong>Esther Idoko Idachaba</strong> and their daughter <strong>Chubiyojo</strong>.
+                  Born with a mandate to empower believers, <span className="text-white font-bold">Pastor Idoko Idu Idachaba</span> has spent over two decades in faithful ministry.
+                  His journey began in 1998, serving for 16 years with Living Faith Church Worldwide before being commissioned to lead HGCC.
                 </p>
+                <div className="grid grid-cols-2 gap-8 border-y border-white/10 py-10 my-10">
+                  <div className="space-y-2">
+                    <p className="text-[10px] font-bold tracking-widest text-primary uppercase">ASSIGNMENT</p>
+                    <p className="text-xl font-bold font-[family-name:var(--font-playfair)]">Preaching Faith</p>
+                  </div>
+                  <div className="space-y-2">
+                    <p className="text-[10px] font-bold tracking-widest text-primary uppercase">RESTORATION</p>
+                    <p className="text-xl font-bold font-[family-name:var(--font-playfair)]">Empowering Lives</p>
+                  </div>
+                </div>
                 <p>
-                  His ministry journey began in 1998 with <strong>Living Faith Church Worldwide</strong>, serving faithfully as a part-time pastor for 4 years and a full-time pastor for 12 years, ministering both within and outside Nigeria. His last assignment was at LFC Gberigbe, Ikorodu, Lagos State in 2022.
-                </p>
-                <p>
-                  Pastor Idoko’s ministry vision is anchored on empowering believers to walk boldly in God’s promises, preaching faith, and making God’s Word practical in everyday life. Under his leadership, HGCC has become a dynamic, faith-driven church impacting lives locally and globally.
+                  Under his leadership, HGCC has become a dynamic, faith-driven church impacting lives locally and globally,
+                  anchored on the principle that through the Word made real, every tribe shall find the way of salvation.
                 </p>
               </div>
 
-              <blockquote className="mt-8 border-l-4 border-primary pl-6 py-2 italic text-lg text-foreground/80 bg-white/50 rounded-r-lg">
-                "It is our prayer that through this ministry, your faith will grow, your life will be impacted, and your spiritual journey strengthened."
+              <blockquote className="relative p-12 border border-primary/20 bg-primary/5">
+                <Heart className="absolute -top-4 -left-4 h-8 w-8 text-primary fill-primary/20" />
+                <p className="text-xl md:text-2xl font-bold font-[family-name:var(--font-playfair)] text-white/90 italic leading-relaxed">
+                  "It is our prayer that through this ministry, your faith will grow, your life will be impacted, and your spiritual journey strengthened."
+                </p>
               </blockquote>
             </div>
           </div>

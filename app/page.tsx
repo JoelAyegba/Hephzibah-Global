@@ -4,10 +4,11 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowRight, Heart, Users, BookOpen, Sparkles, Quote, Calendar, MapPin, Clock, Landmark } from "lucide-react"
+import { ArrowRight, Heart, Users, BookOpen, Sparkles, Quote, Calendar, MapPin, Clock, Landmark, ArrowUpRight } from "lucide-react"
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
 import Autoplay from "embla-carousel-autoplay"
 import { useRef } from "react"
+import { cn } from "@/lib/utils"
 
 const sliderImages = [
   {
@@ -36,137 +37,196 @@ export default function HomePage() {
 
   return (
     <main>
-      {/* Hero Section */}
-      <section className="relative min-h-[600px] flex items-center justify-center overflow-hidden">
-        <Carousel
-          // @ts-ignore
-          plugins={[plugin.current]}
-          className="w-full h-full absolute inset-0 z-0"
-          onMouseEnter={plugin.current.stop}
-          onMouseLeave={plugin.current.reset}
-        >
-          <CarouselContent className="h-full">
-            {sliderImages.map((image, index) => (
-              <CarouselItem key={index} className="h-full">
-                <div className="w-full h-full">
-                  <img src={image.src} alt={image.alt} className="w-full h-full object-cover" />
+      {/* Hero Section - The Sacred Pillar */}
+      <section className="relative min-h-[95vh] flex flex-col justify-end overflow-hidden pt-32 pb-20">
+        {/* Background Canvas */}
+        <div className="absolute inset-0 z-0">
+          <Carousel
+            // @ts-ignore
+            plugins={[plugin.current]}
+            className="w-full h-full"
+            onMouseEnter={plugin.current.stop}
+            onMouseLeave={plugin.current.reset}
+          >
+            <CarouselContent className="h-full ml-0">
+              {sliderImages.map((image, index) => (
+                <CarouselItem key={index} className="h-full pl-0">
+                  <div className="w-full h-[100vh] relative">
+                    <img
+                      src={image.src}
+                      alt={image.alt}
+                      className="w-full h-full object-cover scale-105 animate-[subtle-zoom_20s_infinite_alternate]"
+                    />
+                    {/* Deep Sacred Overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+                    <div className="absolute inset-0 bg-black/40" />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+
+          {/* Radiant Light Beam */}
+          <div className="absolute top-0 right-[10%] w-[1px] h-full bg-gradient-to-b from-primary/0 via-primary/50 to-primary/0 blur-[2px] opacity-30" />
+        </div>
+
+        {/* Massive Watermark Typography */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none z-10 overflow-hidden">
+          <h2 className="text-[25vw] font-black leading-none text-white/[0.03] tracking-tighter uppercase whitespace-nowrap animate-slide-right font-sans">
+            HEPHZIBAH
+          </h2>
+        </div>
+
+        {/* Content Layer - Asymmetric Tension */}
+        <div className="container mx-auto px-8 relative z-20">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-end">
+            <div className="lg:col-span-8 space-y-10">
+              <div className="space-y-4 animate-in fade-in slide-in-from-left-10 duration-1000">
+                <div className="flex items-center gap-4">
+                  <span className="h-[1px] w-12 bg-primary" />
+                  <span className="text-xs font-bold tracking-[0.5em] text-primary uppercase">ESTD. 2022</span>
                 </div>
-              </CarouselItem>
-            ))}
-          </CarouselContent>
-        </Carousel>
-        <div className="absolute inset-0 bg-gradient-to-br from-black/60 via-black/50 to-primary/30" />
+                <h1 className="text-6xl md:text-8xl lg:text-9xl font-black font-[family-name:var(--font-playfair)] text-white leading-[0.9] tracking-tight">
+                  The Word <br />
+                  <span className="italic text-primary">Made Real.</span>
+                </h1>
+              </div>
 
-        <div className="container mx-auto px-4 z-10 text-center">
-          <h1
-            className="text-4xl md:text-6xl lg:text-7xl font-bold font-[family-name:var(--font-playfair)] mb-6 text-balance text-white"
-            style={{ textShadow: "2px 2px 8px rgba(0,0,0,0.5)" }}
-          >
-            Welcome to Hephzibah Global Christian Centre
-          </h1>
-          <p
-            className="text-lg md:text-xl max-w-2xl mx-auto mb-8 leading-relaxed text-white/90"
-            style={{ textShadow: "1px 1px 4px rgba(0,0,0,0.4)" }}
-          >
-            We are delighted to have you visit our online home. Our church is a vibrant and dynamic faith-preaching community grounded in the truth of Isaiah 62:2-4, committed to making the Word of God real in the lives of His people.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-
-            <Button size="lg" variant="outline" asChild className="border-white text-white hover:bg-white/10 bg-transparent">
-              <Link href="/about">
-                Join Our Family <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Vision and Mission Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-playfair)]">Our Beliefs</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <Card className="p-6 text-center">
-              <h3 className="text-2xl font-bold font-[family-name:var(--font-playfair)] mb-4 text-primary">Walking with God</h3>
-              <p className="text-lg leading-relaxed text-foreground/80">
-                {"We believe in building a personal relationship with God, walking daily in His light, and growing in spiritual maturity."}
-              </p>
-            </Card>
-            <Card className="p-6 text-center">
-              <h3 className="text-2xl font-bold font-[family-name:var(--font-playfair)] mb-4 text-primary">Building Faith</h3>
-              <p className="text-lg leading-relaxed text-foreground/80">
-                {"Faith is the substance of things hoped for. We are committed to teaching the word of God to build strong, unshakable faith in every believer."}
-              </p>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Ministries */}
-      <section className="py-20 bg-muted">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-playfair)] mb-4">Our Ministries</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <Card className="group hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 transition-colors">
-                    <BookOpen className="h-6 w-6 text-primary" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-3">Bible Study</h3>
-                  <p className="text-muted-foreground leading-relaxed mb-4">
-                    {
-                      "Deep dive into the scriptures to understand God's will and apply it to our daily lives."
-                    }
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="group hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  <div className="w-12 h-12 rounded-lg bg-secondary/10 flex items-center justify-center mb-4 group-hover:bg-secondary/20 transition-colors">
-                    <Sparkles className="h-6 w-6 text-secondary" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-3">Discipleship</h3>
-                  <p className="text-muted-foreground leading-relaxed mb-4">
-                    {"Mentoring and guiding believers to becoming mature followers of Christ and leaders in their communities."}
-                  </p>
-                </CardContent>
-              </Card>
-
-              <Card className="group hover:shadow-lg transition-shadow">
-                <CardContent className="p-6">
-                  <div className="w-12 h-12 rounded-lg bg-accent/10 flex items-center justify-center mb-4 group-hover:bg-accent/20 transition-colors">
-                    <Users className="h-6 w-6 text-accent" />
-                  </div>
-                  <h3 className="text-xl font-semibold mb-3">Community Outreach</h3>
-                  <p className="text-muted-foreground leading-relaxed mb-4">
-                    {"Extending the love of Christ to our community through evangelism, support, and care."}
-                  </p>
-                </CardContent>
-              </Card>
+              <div className="flex flex-col sm:flex-row gap-6 animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-300">
+                <Link
+                  href="/about"
+                  className="bg-primary text-primary-foreground px-12 py-5 text-sm font-bold tracking-[0.3em] uppercase hover:bg-white hover:text-black transition-all duration-500 shadow-2xl"
+                >
+                  DISCOVER OUR STORY
+                </Link>
+                <Link
+                  href="/programs"
+                  className="border border-white/20 backdrop-blur-md bg-white/5 px-12 py-5 text-sm font-bold tracking-[0.3em] uppercase text-white hover:bg-white/10 transition-all duration-500"
+                >
+                  OUR MINISTRIES
+                </Link>
+              </div>
             </div>
 
+            <div className="lg:col-span-4 lg:text-right">
+              <div className="space-y-6 animate-in fade-in slide-in-from-right-10 duration-1000 delay-500">
+                <p className="text-sm md:text-base font-light text-white/70 leading-relaxed italic border-r border-primary/40 pr-8 lg:pr-0 lg:border-r-0 lg:border-l lg:pl-8">
+                  "Making the word of God in our lives real thereby causing nations to come to our righteousness."
+                </p>
+                <p className="text-[10px] tracking-[0.3em] font-bold text-primary uppercase">ISAIAH 62:2-4</p>
+              </div>
+            </div>
+          </div>
+        </div>
 
+        {/* Scroll Indicator */}
+        <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 group cursor-pointer animate-bounce">
+          <span className="text-[10px] tracking-[0.5em] text-white/30 uppercase group-hover:text-primary transition-colors">SCROLL</span>
+          <div className="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent" />
+        </div>
+      </section>
+
+      {/* Vision and Mission Section - The foundation */}
+      <section className="py-32 bg-background relative overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/30 to-transparent" />
+
+        <div className="container mx-auto px-8">
+          <div className="flex flex-col lg:flex-row gap-16 items-start">
+            <div className="lg:w-1/3 space-y-6 lg:sticky lg:top-32">
+              <h2 className="text-xs font-bold tracking-[0.6em] text-primary uppercase">OUR CORE</h2>
+              <h3 className="text-4xl md:text-5xl font-black font-[family-name:var(--font-playfair)] leading-none tracking-tighter">
+                WALKING IN <br />
+                THE LIGHT.
+              </h3>
+              <p className="text-sm text-muted-foreground font-light leading-relaxed max-w-sm">
+                We are a community grounded in the truth of Isaiah 62:2-4, committed to making the Word of God real.
+              </p>
+            </div>
+
+            <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="p-10 border border-border bg-card/50 backdrop-blur-sm space-y-4 hover:border-primary/50 transition-colors duration-500 rounded-none">
+                <span className="text-[10px] font-bold tracking-[0.4em] text-primary uppercase">01</span>
+                <h4 className="text-2xl font-bold font-[family-name:var(--font-playfair)] tracking-tight">Walking with God</h4>
+                <p className="text-sm font-light leading-relaxed text-muted-foreground">
+                  Building a personal relationship with God, walking daily in His light, and growing in spiritual maturity through the living Word.
+                </p>
+              </div>
+              <div className="p-10 border border-border bg-card/50 backdrop-blur-sm space-y-4 hover:border-primary/50 transition-colors duration-500 rounded-none mt-8 md:mt-16">
+                <span className="text-[10px] font-bold tracking-[0.4em] text-primary uppercase">02</span>
+                <h4 className="text-2xl font-bold font-[family-name:var(--font-playfair)] tracking-tight">Building Faith</h4>
+                <p className="text-sm font-light leading-relaxed text-muted-foreground">
+                  Teaching the word of God to build strong, unshakable faith in every believer, causing nations to come to our righteousness.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Ministries - The Sacred Work */}
+      <section className="py-32 bg-foreground text-background relative">
+        <div className="container mx-auto px-8 relative z-10">
+          <div className="flex flex-col md:flex-row justify-between items-end mb-20 gap-8">
+            <div className="space-y-4">
+              <h2 className="text-xs font-bold tracking-[0.6em] text-primary uppercase">MINISTRIES</h2>
+              <h3 className="text-4xl md:text-6xl font-black font-[family-name:var(--font-playfair)] tracking-tighter">OUR SACRED WORK.</h3>
+            </div>
+            <Link href="/programs" className="group flex items-center gap-3 text-xs font-bold tracking-[0.3em] uppercase hover:text-primary transition-colors">
+              VIEW ALL <ArrowRight className="h-4 w-4 group-hover:translate-x-2 transition-transform" />
+            </Link>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3">
+            {[
+              { icon: BookOpen, title: "Bible Study", desc: "Deep dive into the scriptures to understand God's will and apply it to our daily lives." },
+              { icon: Sparkles, title: "Discipleship", desc: "Mentoring and guiding believers to becoming mature followers of Christ and leaders." },
+              { icon: Users, title: "Outreach", desc: "Extending the love of Christ to our community through evangelism, support, and care." }
+            ].map((m, i) => (
+              <div key={m.title} className={cn(
+                "p-12 border-white/5 space-y-6 hover:bg-white/[0.02] transition-colors duration-700",
+                i === 0 ? "border-b md:border-b-0 md:border-r" : i === 1 ? "border-b md:border-b-0 md:border-r" : ""
+              )}>
+                <div className="w-16 h-16 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500">
+                  <m.icon className="h-6 w-6" />
+                </div>
+                <h4 className="text-2xl font-bold font-[family-name:var(--font-playfair)] tracking-tight text-white">{m.title}</h4>
+                <p className="text-sm font-light leading-relaxed text-white/50">{m.desc}</p>
+                <Link href="/programs" className="inline-block text-[10px] font-bold tracking-[0.4em] uppercase text-primary hover:text-white transition-colors">LEARN MORE</Link>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
 
-      {/* Watch Our Services Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-playfair)] mb-4">Watch Our Services</h2>
-            <p className="text-lg text-muted-foreground">
-              Join us online and experience the power of worship and the Word of God
+      {/* Watch Our Services Section - The Digital Gate */}
+      <section className="py-32 bg-background relative overflow-hidden">
+        <div className="container mx-auto px-8 flex flex-col lg:flex-row gap-20">
+          <div className="lg:w-1/3 space-y-8 lg:sticky lg:top-32">
+            <h2 className="text-xs font-bold tracking-[0.6em] text-primary uppercase">THE STREAM</h2>
+            <h3 className="text-4xl md:text-5xl font-black font-[family-name:var(--font-playfair)] tracking-tighter leading-none">
+              EXPERIENCE <br />
+              THE RADIANCE.
+            </h3>
+            <p className="text-sm font-light text-muted-foreground leading-relaxed">
+              Join our global congregation online. Every word spoken is a seed of righteousness making the Word real.
             </p>
+            <div className="pt-6">
+              <a
+                href="https://youtube.com/@idokoiduidachaba1645"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-3 text-xs font-bold tracking-[0.3em] uppercase hover:text-red-600 transition-colors"
+              >
+                YOUTUBE CHANNEL <ArrowUpRight className="h-4 w-4 transform group-hover:-translate-y-1 group-hover:translate-x-1 transition-transform" />
+              </a>
+            </div>
           </div>
 
-          <div className="max-w-5xl mx-auto">
-            <div className="aspect-video w-full rounded-xl overflow-hidden shadow-2xl border-4 border-primary/10">
+          <div className="lg:w-2/3 relative group">
+            {/* The "Golden Gate" Frame */}
+            <div className="absolute -inset-4 border border-primary/20 pointer-events-none transition-all duration-700 group-hover:-inset-2 opacity-50" />
+            <div className="aspect-video w-full bg-foreground relative overflow-hidden z-10 rounded-none border border-white/5">
               <iframe
                 width="100%"
                 height="100%"
@@ -175,111 +235,86 @@ export default function HomePage() {
                 frameBorder="0"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
-                className="w-full h-full"
+                className="w-full h-full grayscale-[0.2] group-hover:grayscale-0 transition-all duration-700"
               ></iframe>
             </div>
-
-            <div className="mt-8 text-center">
-              <a
-                href="https://youtube.com/@idokoiduidachaba1645?si=QZEFa_cMmQvAD2eo"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3 bg-red-600 text-white font-semibold rounded-lg hover:bg-red-700 transition-colors shadow-lg"
-              >
-                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
-                </svg>
-                Subscribe to Our Channel
-              </a>
-            </div>
           </div>
         </div>
       </section>
 
-      {/* Book Launch Section */}
-      <section className="py-20 bg-primary/5">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row items-center gap-12">
-            <div className="w-full md:w-1/3 flex justify-center">
-              {/* Book Cover */}
-              <div className="aspect-[2/3] w-full max-w-sm rounded-lg shadow-xl overflow-hidden">
-                <img src="/book.jpg" alt="Book Cover: When Your Boat is Filling With Water" className="w-full h-full object-cover" />
+      {/* Book Launch - The Printed Pillar */}
+      <section className="py-32 bg-[#0a0a0a] text-white relative">
+        <div className="absolute inset-0 opacity-10 bg-[url('https://grainy-gradients.vercel.app/noise.svg')]" />
+        <div className="container mx-auto px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            <div className="lg:col-span-5 flex justify-center lg:justify-start order-2 lg:order-1">
+              <div className="relative group p-4 border border-white/10">
+                <img src="/book.jpg" alt="When Your Boat is Filling With Water" className="w-[300px] shadow-2xl transition-transform duration-700 group-hover:scale-105" />
+                <div className="absolute top-0 right-0 h-full w-[1px] bg-primary/30" />
+                <div className="absolute bottom-0 left-0 w-full h-[1px] bg-primary/30" />
               </div>
             </div>
-            <div className="w-full md:w-2/3">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 mb-6">
-                <Sparkles className="h-4 w-4 text-primary" />
-                <span className="text-sm font-medium text-primary">New Book Release</span>
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-playfair)] mb-6">
-                WHEN YOUR BOAT IS FILLING WITH WATER, WHERE IS YOUR FAITH
-              </h2>
-              <div className="space-y-6 text-lg text-muted-foreground leading-relaxed">
-                <p>
-                  "In it, sir, I wrote on how faith is the master key to living above the storms of life. I defined faith and how it can be built in the life of the believer. I also mentioned the enemies of faith and how to walk with God."
-                </p>
-                <div className="bg-white p-6 rounded-lg border border-border/50 shadow-sm">
-                  <p className="font-semibold text-foreground">
-                    "I am privileged by God to have the book forwarded by Bishop Thomas Aremu. Thank you, Sir."
-                  </p>
-                </div>
-                <div className="flex flex-col gap-2">
-                  <p className="font-medium text-foreground">
-                    Official Release: Dec 31st at our Cross-over Service tagged EXODUS.
-                  </p>
-                  <p className="text-sm">
-                    Available in Hard Copy (Paperback & Hardcover) and on all platforms.
-                  </p>
-                </div>
-              </div>
-              <div className="mt-8">
-                <p className="text-xl font-bold font-[family-name:var(--font-playfair)] text-primary mb-2">
-                  "All things are Possible. You are God's Delight."
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Giving Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-5xl mx-auto bg-slate-50 rounded-3xl overflow-hidden shadow-xl border border-slate-100 flex flex-col md:flex-row">
-            <div className="md:w-1/2 p-8 md:p-12 bg-primary text-primary-foreground flex flex-col justify-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/10 mb-6 w-fit">
-                <Heart className="h-4 w-4 text-secondary" />
-                <span className="text-sm font-medium">Partnership & Giving</span>
-              </div>
-              <h2 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-playfair)] mb-6">
-                Support the Vision
-              </h2>
-              <p className="text-lg opacity-90 mb-8 leading-relaxed">
-                Join us in spreading the gospel and making an impact in our community. Your generosity fuels the mission of Hephzibah Global Christian Centre.
-              </p>
-              <Button size="lg" variant="secondary" asChild className="w-fit font-bold">
-                <Link href="/giving">
-                  All Giving Options <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-            </div>
-            <div className="md:w-1/2 p-8 md:p-12 flex flex-col justify-center bg-white">
-              <h3 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                <Landmark className="h-6 w-6 text-primary" />
-                Direct Transfer
-              </h3>
+            <div className="lg:col-span-7 space-y-10 order-1 lg:order-2">
               <div className="space-y-4">
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-100">
-                  <div className="text-xs font-semibold text-primary uppercase tracking-wider mb-1">Bank Name</div>
-                  <div className="text-xl font-bold text-slate-900 uppercase">UBA</div>
+                <span className="text-[10px] font-bold tracking-[0.6em] text-primary uppercase">SACRED WISDOM</span>
+                <h2 className="text-4xl md:text-6xl font-black font-[family-name:var(--font-playfair)] leading-[0.9] tracking-tighter">
+                  WHEN YOUR BOAT <br /> IS FILLING.
+                </h2>
+              </div>
+
+              <div className="space-y-6 text-sm md:text-base font-light text-white/60 leading-relaxed max-w-xl italic">
+                <p>
+                  "Faith is the master key to living above the storms of life. I defined faith and how it can be built in the life of the believer... I also mentioned the enemies of faith and how to walk with God."
+                </p>
+                <div className="pt-6 border-l-2 border-primary pl-8">
+                  <p className="text-white font-bold tracking-[0.1em] text-xs uppercase opacity-80 mb-2">Forwarded by</p>
+                  <p className="text-2xl font-[family-name:var(--font-playfair)] text-white">Bishop Thomas Aremu</p>
                 </div>
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-100">
-                  <div className="text-xs font-semibold text-primary uppercase tracking-wider mb-1">Account Number</div>
-                  <div className="text-2xl font-bold text-slate-900 tracking-wider">1025194880</div>
+              </div>
+
+              <p className="text-[10px] tracking-[0.3em] font-bold text-primary uppercase">OFFICIAL RELEASE / DEC 31ST</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Giving - Support the Vision */}
+      <section className="py-32 bg-background relative overflow-hidden">
+        <div className="container mx-auto px-8 relative z-10">
+          <div className="max-w-7xl mx-auto flex flex-col lg:flex-row shadow-none overflow-hidden border border-border rounded-none">
+            <div className="lg:w-1/2 p-12 lg:p-20 bg-foreground text-background space-y-12">
+              <div className="space-y-4">
+                <h2 className="text-xs font-bold tracking-[0.6em] text-primary uppercase">PARTNERSHIP</h2>
+                <h3 className="text-4xl md:text-5xl font-black font-[family-name:var(--font-playfair)] leading-none tracking-tighter">
+                  SUPPORT <br /> THE VISION.
+                </h3>
+              </div>
+              <p className="text-sm font-light leading-relaxed opacity-70 max-w-sm">
+                Join us in spreading the gospel and making an impact. Your generosity fuels the mission to draw nations to righteousness.
+              </p>
+              <Link
+                href="/giving"
+                className="inline-block bg-primary text-primary-foreground px-12 py-5 text-xs font-bold tracking-[0.3em] uppercase hover:bg-white hover:text-black transition-all duration-500 rounded-none shadow-xl shadow-primary/20"
+              >
+                VIEW GIVING OPTIONS
+              </Link>
+            </div>
+
+            <div className="lg:w-1/2 p-12 lg:p-20 space-y-12 bg-card">
+              <h3 className="text-xs font-bold tracking-[0.6em] text-foreground uppercase border-b border-border pb-4">DIRECT TRANSFER</h3>
+              <div className="space-y-8">
+                <div className="group">
+                  <p className="text-[10px] tracking-[0.4em] font-bold text-primary uppercase mb-1">BANK</p>
+                  <p className="text-3xl font-black font-[family-name:var(--font-playfair)] tracking-tight">UBA</p>
                 </div>
-                <div className="p-4 rounded-xl bg-slate-50 border border-slate-100">
-                  <div className="text-xs font-semibold text-primary uppercase tracking-wider mb-1">Account Name</div>
-                  <div className="text-lg font-bold text-slate-900 uppercase">Hephzibah Global Christian Center</div>
+                <div className="group">
+                  <p className="text-[10px] tracking-[0.4em] font-bold text-primary uppercase mb-1">ACCOUNT NUMBER</p>
+                  <p className="text-4xl font-black font-[family-name:var(--font-playfair)] tracking-widest text-[#111]">1025194880</p>
+                </div>
+                <div className="group">
+                  <p className="text-[10px] tracking-[0.4em] font-bold text-primary uppercase mb-1">ACCOUNT NAME</p>
+                  <p className="text-sm font-bold tracking-widest uppercase opacity-80">Hephzibah Global Christian Center</p>
                 </div>
               </div>
             </div>
@@ -287,22 +322,33 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Call to Action */}
-      <section className="relative py-32 bg-cover bg-center" style={{ backgroundImage: "url('/pastor&wife.jpeg')" }}>
-        <div className="absolute inset-0 bg-black/60" />
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <Users className="h-12 w-12 mx-auto mb-6 text-primary-foreground" />
-          <h2 className="text-3xl md:text-4xl font-bold font-[family-name:var(--font-playfair)] mb-6 text-balance text-primary-foreground">
-            You are God's Delight
-          </h2>
-          <p className="text-lg max-w-2xl mx-auto mb-8 leading-relaxed text-primary-foreground/90">
-            {"Join us as we walk together in faith."}
+      {/* Final Call - The Sacred Delight */}
+      <section className="relative py-48 bg-cover bg-center bg-fixed group" style={{ backgroundImage: "url('/pastor&wife.jpeg')" }}>
+        <div className="absolute inset-0 bg-[#050505]/70 backdrop-blur-[2px] transition-all duration-1000 group-hover:backdrop-blur-none" />
+        <div className="container mx-auto px-8 text-center relative z-10 space-y-12">
+          <div className="space-y-4">
+            <span className="text-[10px] font-bold tracking-[1em] text-primary uppercase block animate-pulse">EXODUS</span>
+            <h2 className="text-5xl md:text-8xl lg:text-9xl font-black font-[family-name:var(--font-playfair)] text-white tracking-tighter leading-none">
+              YOU ARE <br />
+              GOD'S <span className="italic text-primary">DELIGHT.</span>
+            </h2>
+          </div>
+          <p className="text-sm md:text-base font-light text-white/60 tracking-widest uppercase max-w-lg mx-auto leading-loose border-y border-white/10 py-6">
+            JOIN US AS WE WALK TOGETHER IN FAITH TOWARDS THE BRIGHTNESS OF OUR RISING.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-
-            <Button size="lg" variant="outline" asChild className="border-primary-foreground text-primary-foreground hover:bg-primary-foreground/10 bg-transparent">
-              <Link href="/contact">Connect With Us</Link>
-            </Button>
+          <div className="pt-8 flex justify-center flex-col sm:flex-row gap-6">
+            <Link
+              href="/contact"
+              className="bg-primary hover:bg-white text-primary-foreground hover:text-black px-12 py-5 text-xs font-bold tracking-[0.4em] transition-all duration-500 rounded-none shadow-2xl"
+            >
+              CONNECT WITH US
+            </Link>
+            <Link
+              href="/about"
+              className="border border-white/30 text-white hover:bg-white/10 px-12 py-5 text-xs font-bold tracking-[0.4em] backdrop-blur-sm transition-all duration-500 rounded-none"
+            >
+              LEARN MORE
+            </Link>
           </div>
         </div>
       </section>
