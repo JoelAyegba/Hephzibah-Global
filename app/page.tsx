@@ -4,11 +4,11 @@ import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { ArrowRight, Heart, Users, BookOpen, Sparkles, Quote, Calendar, MapPin, Clock, Landmark, ArrowUpRight } from "lucide-react"
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel"
-import Autoplay from "embla-carousel-autoplay"
-import { useRef } from "react"
+import { useRef, useState } from "react"
 import { cn } from "@/lib/utils"
+import { ArrowRight, Heart, Users, BookOpen, Sparkles, Quote, Calendar, MapPin, Clock, Landmark, ArrowUpRight, Copy, Check } from "lucide-react"
+import { Carousel, CarouselContent, CarouselItem } from "@/components/ui/carousel"
+import Autoplay from "embla-carousel-autoplay"
 
 const sliderImages = [
   {
@@ -34,6 +34,13 @@ const sliderImages = [
 
 export default function HomePage() {
   const plugin = useRef(Autoplay({ delay: 5000, stopOnInteraction: true }))
+  const [copiedValue, setCopiedValue] = useState<string | null>(null)
+
+  const handleCopy = (value: string) => {
+    navigator.clipboard.writeText(value)
+    setCopiedValue(value)
+    setTimeout(() => setCopiedValue(null), 2000)
+  }
 
   return (
     <main>
@@ -312,9 +319,27 @@ export default function HomePage() {
                   <p className="text-[11px] tracking-[0.4em] font-bold text-primary uppercase mb-1">BANK</p>
                   <p className="text-4xl font-black font-[family-name:var(--font-playfair)] tracking-tight">UBA</p>
                 </div>
-                <div className="group">
-                  <p className="text-[11px] tracking-[0.4em] font-bold text-primary uppercase mb-1">ACCOUNT NUMBER</p>
-                  <p className="text-5xl font-black font-[family-name:var(--font-playfair)] tracking-widest text-foreground">1025194880</p>
+                <div className="group flex justify-between items-end">
+                  <div>
+                    <p className="text-[11px] tracking-[0.4em] font-bold text-primary uppercase mb-1">ACCOUNT NUMBER</p>
+                    <p className="text-5xl font-black font-[family-name:var(--font-playfair)] tracking-widest text-foreground">1025194880</p>
+                  </div>
+                  <button
+                    onClick={() => handleCopy("1025194880")}
+                    className="flex items-center gap-2 text-[11px] font-bold tracking-widest text-primary uppercase hover:text-foreground transition-colors group/copy pb-1"
+                  >
+                    {copiedValue === "1025194880" ? (
+                      <>
+                        <Check className="h-3 w-3" />
+                        <span>COPIED</span>
+                      </>
+                    ) : (
+                      <>
+                        <Copy className="h-3 w-3 group-hover/copy:scale-110 transition-transform" />
+                        <span>COPY</span>
+                      </>
+                    )}
+                  </button>
                 </div>
                 <div className="group">
                   <p className="text-[11px] tracking-[0.4em] font-bold text-primary uppercase mb-1">ACCOUNT NAME</p>
