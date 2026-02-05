@@ -45,27 +45,31 @@ export default function ContactPage() {
           <img
             src="/pastor preaching.JPG"
             alt="Contact HGCC"
-            className="w-full h-full object-cover grayscale opacity-20 scale-105"
+            className="w-full h-full object-cover scale-105 animate-[subtle-zoom_20s_infinite_alternate] brightness-[0.7] contrast-[1.1]"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-background via-background/80 to-transparent" />
+          <div className="absolute inset-0 bg-black/40" />
+
+          {/* Radiant Light Beam */}
+          <div className="absolute top-0 right-[30%] w-[1px] h-full bg-gradient-to-b from-primary/0 via-primary/30 to-primary/0 blur-[1px] opacity-20" />
         </div>
 
         {/* Watermark */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none z-10 overflow-hidden">
-          <h2 className="text-[25vw] font-black leading-none text-primary/[0.03] tracking-tighter uppercase whitespace-nowrap font-sans">
+          <h2 className="text-[25vw] font-black leading-none text-white/[0.04] tracking-tighter uppercase whitespace-nowrap font-sans animate-slide-right">
             CONNECT
           </h2>
         </div>
 
         <div className="container mx-auto px-8 relative z-20">
-          <div className="space-y-4">
+          <div className="space-y-4 animate-in fade-in slide-in-from-left-10 duration-1000">
             <div className="flex items-center gap-4">
-              <span className="h-[1px] w-12 bg-primary" />
-              <span className="text-xs font-bold tracking-[0.5em] text-primary uppercase">GET IN TOUCH</span>
+              <span className="h-[1px] w-12 bg-primary shadow-[0_0_10px_rgba(var(--primary),0.5)]" />
+              <span className="text-xs font-bold tracking-[0.5em] text-primary uppercase drop-shadow-sm">GET IN TOUCH</span>
             </div>
-            <h1 className="text-6xl md:text-8xl lg:text-9xl font-black font-[family-name:var(--font-playfair)] text-white leading-[0.9] tracking-tight">
+            <h1 className="text-6xl md:text-8xl lg:text-9xl font-black font-[family-name:var(--font-playfair)] text-white leading-[0.9] tracking-tight [text-shadow:0_10px_30px_rgba(0,0,0,0.8)]">
               Speak to <br />
-              <span className="italic text-primary">Us.</span>
+              <span className="italic text-primary drop-shadow-[0_0_15px_rgba(212,175,55,0.3)]">Us.</span>
             </h1>
           </div>
         </div>
@@ -108,11 +112,11 @@ export default function ContactPage() {
                         const isPhone = detail.startsWith("091") || detail.startsWith("080");
 
                         return isEmail ? (
-                          <a key={idx} href={`mailto:${detail}`} className="block text-xl font-bold font-[family-name:var(--font-playfair)] tracking-tight hover:text-primary transition-colors">{detail}</a>
+                          <a key={idx} href={`mailto:${detail}`} className="block text-2xl font-bold font-[family-name:var(--font-playfair)] tracking-tight hover:text-primary transition-colors">{detail}</a>
                         ) : isPhone ? (
-                          <a key={idx} href={`tel:${detail}`} className="block text-xl font-bold font-[family-name:var(--font-playfair)] tracking-tight hover:text-primary transition-colors">{detail}</a>
+                          <a key={idx} href={`tel:${detail}`} className="block text-2xl font-bold font-[family-name:var(--font-playfair)] tracking-tight hover:text-primary transition-colors">{detail}</a>
                         ) : (
-                          <p key={idx} className="text-sm font-light leading-relaxed text-muted-foreground">{detail}</p>
+                          <p key={idx} className="text-base font-light leading-relaxed text-muted-foreground">{detail}</p>
                         );
                       })}
                     </div>
@@ -137,7 +141,7 @@ export default function ContactPage() {
                     >
                       <div className="flex items-center gap-4">
                         <social.icon className="h-4 w-4 text-muted-foreground group-hover:text-primary" />
-                        <span className="text-[10px] font-bold tracking-widest uppercase">{social.name}</span>
+                        <span className="text-[11px] font-bold tracking-widest uppercase">{social.name}</span>
                       </div>
                       <ArrowUpRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </a>

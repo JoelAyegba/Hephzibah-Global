@@ -55,11 +55,13 @@ export default function HomePage() {
                     <img
                       src={image.src}
                       alt={image.alt}
-                      className="w-full h-full object-cover scale-105 animate-[subtle-zoom_20s_infinite_alternate]"
+                      className="w-full h-full object-cover scale-105 animate-[subtle-zoom_20s_infinite_alternate] brightness-[0.7] contrast-[1.1]"
                     />
-                    {/* Deep Sacred Overlay */}
-                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/40 to-transparent" />
+                    {/* Sacred Luminance Overlays */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent" />
                     <div className="absolute inset-0 bg-black/40" />
+                    {/* Warm Gold Tint Layer */}
+                    <div className="absolute inset-0 bg-primary/10 mix-blend-overlay" />
                   </div>
                 </CarouselItem>
               ))}
@@ -72,7 +74,7 @@ export default function HomePage() {
 
         {/* Massive Watermark Typography */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full text-center pointer-events-none select-none z-10 overflow-hidden">
-          <h2 className="text-[25vw] font-black leading-none text-white/[0.03] tracking-tighter uppercase whitespace-nowrap animate-slide-right font-sans">
+          <h2 className="text-[25vw] font-black leading-none text-white/[0.05] tracking-tighter uppercase whitespace-nowrap animate-slide-right font-sans">
             HEPHZIBAH
           </h2>
         </div>
@@ -83,25 +85,25 @@ export default function HomePage() {
             <div className="lg:col-span-8 space-y-10">
               <div className="space-y-4 animate-in fade-in slide-in-from-left-10 duration-1000">
                 <div className="flex items-center gap-4">
-                  <span className="h-[1px] w-12 bg-primary" />
-                  <span className="text-xs font-bold tracking-[0.5em] text-primary uppercase">ESTD. 2022</span>
+                  <span className="h-[1px] w-12 bg-primary shadow-[0_0_15px_rgba(var(--primary),0.8)]" />
+                  <span className="text-xs font-bold tracking-[0.5em] text-primary uppercase drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">ESTD. 2022</span>
                 </div>
-                <h1 className="text-6xl md:text-8xl lg:text-9xl font-black font-[family-name:var(--font-playfair)] text-white leading-[0.9] tracking-tight">
+                <h1 className="text-6xl md:text-8xl lg:text-9xl font-black font-[family-name:var(--font-playfair)] text-white leading-[0.9] tracking-tight [text-shadow:0_10px_30px_rgba(0,0,0,0.8),0_4px_8px_rgba(0,0,0,0.9)]">
                   The Word <br />
-                  <span className="italic text-primary">Made Real.</span>
+                  <span className="italic text-primary drop-shadow-[0_0_20px_rgba(0,0,0,0.8)]">Made Real.</span>
                 </h1>
               </div>
 
               <div className="flex flex-col sm:flex-row gap-6 animate-in fade-in slide-in-from-bottom-10 duration-1000 delay-300">
                 <Link
                   href="/about"
-                  className="bg-primary text-primary-foreground px-12 py-5 text-sm font-bold tracking-[0.3em] uppercase hover:bg-white hover:text-black transition-all duration-500 shadow-2xl"
+                  className="bg-primary text-primary-foreground px-12 py-5 text-sm font-bold tracking-[0.3em] uppercase hover:bg-black hover:text-white transition-all duration-500 shadow-2xl shadow-black/50"
                 >
                   DISCOVER OUR STORY
                 </Link>
                 <Link
                   href="/programs"
-                  className="border border-white/20 backdrop-blur-md bg-white/5 px-12 py-5 text-sm font-bold tracking-[0.3em] uppercase text-white hover:bg-white/10 transition-all duration-500"
+                  className="border border-white/40 backdrop-blur-md bg-white/10 px-12 py-5 text-sm font-bold tracking-[0.3em] uppercase text-white hover:bg-white/20 transition-all duration-500 shadow-lg shadow-black/20"
                 >
                   OUR MINISTRIES
                 </Link>
@@ -110,10 +112,12 @@ export default function HomePage() {
 
             <div className="lg:col-span-4 lg:text-right">
               <div className="space-y-6 animate-in fade-in slide-in-from-right-10 duration-1000 delay-500">
-                <p className="text-sm md:text-base font-light text-white/70 leading-relaxed italic border-r border-primary/40 pr-8 lg:pr-0 lg:border-r-0 lg:border-l lg:pl-8">
-                  "Making the word of God in our lives real thereby causing nations to come to our righteousness."
-                </p>
-                <p className="text-[10px] tracking-[0.3em] font-bold text-primary uppercase">ISAIAH 62:2-4</p>
+                <div className="relative group/quote">
+                  <p className="text-base md:text-lg font-medium text-white leading-relaxed italic border-r border-primary/60 pr-8 lg:pr-0 lg:border-r-0 lg:border-l lg:pl-8 [text-shadow:0_4px_20px_rgba(0,0,0,1),0_0_40px_rgba(0,0,0,0.5)]">
+                    "Making the word of God in our lives real thereby causing nations to come to our righteousness."
+                  </p>
+                </div>
+                <p className="text-[11px] tracking-[0.4em] font-black text-primary uppercase [text-shadow:0_2px_10px_rgba(0,0,0,1)]">ISAIAH 62:2-4</p>
               </div>
             </div>
           </div>
@@ -121,7 +125,7 @@ export default function HomePage() {
 
         {/* Scroll Indicator */}
         <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4 group cursor-pointer animate-bounce">
-          <span className="text-[10px] tracking-[0.5em] text-white/30 uppercase group-hover:text-primary transition-colors">SCROLL</span>
+          <span className="text-[10px] tracking-[0.5em] text-white/60 group-hover:text-primary transition-colors uppercase font-bold">SCROLL</span>
           <div className="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent" />
         </div>
       </section>
@@ -134,27 +138,27 @@ export default function HomePage() {
           <div className="flex flex-col lg:flex-row gap-16 items-start">
             <div className="lg:w-1/3 space-y-6 lg:sticky lg:top-32">
               <h2 className="text-xs font-bold tracking-[0.6em] text-primary uppercase">OUR CORE</h2>
-              <h3 className="text-4xl md:text-5xl font-black font-[family-name:var(--font-playfair)] leading-none tracking-tighter">
+              <h3 className="text-4xl md:text-6xl font-black font-[family-name:var(--font-playfair)] leading-none tracking-tighter">
                 WALKING IN <br />
                 THE LIGHT.
               </h3>
-              <p className="text-sm text-muted-foreground font-light leading-relaxed max-w-sm">
+              <p className="text-base text-muted-foreground font-light leading-relaxed max-w-sm">
                 We are a community grounded in the truth of Isaiah 62:2-4, committed to making the Word of God real.
               </p>
             </div>
 
             <div className="lg:w-2/3 grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="p-10 border border-border bg-card/50 backdrop-blur-sm space-y-4 hover:border-primary/50 transition-colors duration-500 rounded-none">
-                <span className="text-[10px] font-bold tracking-[0.4em] text-primary uppercase">01</span>
-                <h4 className="text-2xl font-bold font-[family-name:var(--font-playfair)] tracking-tight">Walking with God</h4>
-                <p className="text-sm font-light leading-relaxed text-muted-foreground">
+                <span className="text-[11px] font-bold tracking-[0.4em] text-primary uppercase">01</span>
+                <h4 className="text-3xl font-bold font-[family-name:var(--font-playfair)] tracking-tight">Walking with God</h4>
+                <p className="text-base font-light leading-relaxed text-muted-foreground">
                   Building a personal relationship with God, walking daily in His light, and growing in spiritual maturity through the living Word.
                 </p>
               </div>
               <div className="p-10 border border-border bg-card/50 backdrop-blur-sm space-y-4 hover:border-primary/50 transition-colors duration-500 rounded-none mt-8 md:mt-16">
-                <span className="text-[10px] font-bold tracking-[0.4em] text-primary uppercase">02</span>
-                <h4 className="text-2xl font-bold font-[family-name:var(--font-playfair)] tracking-tight">Building Faith</h4>
-                <p className="text-sm font-light leading-relaxed text-muted-foreground">
+                <span className="text-[11px] font-bold tracking-[0.4em] text-primary uppercase">02</span>
+                <h4 className="text-3xl font-bold font-[family-name:var(--font-playfair)] tracking-tight">Building Faith</h4>
+                <p className="text-base font-light leading-relaxed text-muted-foreground">
                   Teaching the word of God to build strong, unshakable faith in every believer, causing nations to come to our righteousness.
                 </p>
               </div>
@@ -186,12 +190,12 @@ export default function HomePage() {
                 "p-12 border-white/5 space-y-6 hover:bg-white/[0.02] transition-colors duration-700",
                 i === 0 ? "border-b md:border-b-0 md:border-r" : i === 1 ? "border-b md:border-b-0 md:border-r" : ""
               )}>
-                <div className="w-16 h-16 border border-primary/20 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500">
+                <div className="w-16 h-16 border border-primary/30 flex items-center justify-center text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-500">
                   <m.icon className="h-6 w-6" />
                 </div>
-                <h4 className="text-2xl font-bold font-[family-name:var(--font-playfair)] tracking-tight text-white">{m.title}</h4>
-                <p className="text-sm font-light leading-relaxed text-white/50">{m.desc}</p>
-                <Link href="/programs" className="inline-block text-[10px] font-bold tracking-[0.4em] uppercase text-primary hover:text-white transition-colors">LEARN MORE</Link>
+                <h4 className="text-3xl font-bold font-[family-name:var(--font-playfair)] tracking-tight text-white">{m.title}</h4>
+                <p className="text-base font-light leading-relaxed text-white/80">{m.desc}</p>
+                <Link href="/programs" className="inline-block text-[11px] font-bold tracking-[0.4em] uppercase text-primary hover:text-white transition-colors">LEARN MORE</Link>
               </div>
             ))}
           </div>
@@ -204,11 +208,11 @@ export default function HomePage() {
         <div className="container mx-auto px-8 flex flex-col lg:flex-row gap-20">
           <div className="lg:w-1/3 space-y-8 lg:sticky lg:top-32">
             <h2 className="text-xs font-bold tracking-[0.6em] text-primary uppercase">THE STREAM</h2>
-            <h3 className="text-4xl md:text-5xl font-black font-[family-name:var(--font-playfair)] tracking-tighter leading-none">
+            <h3 className="text-4xl md:text-6xl font-black font-[family-name:var(--font-playfair)] tracking-tighter leading-none">
               EXPERIENCE <br />
               THE RADIANCE.
             </h3>
-            <p className="text-sm font-light text-muted-foreground leading-relaxed">
+            <p className="text-base font-light text-muted-foreground leading-relaxed">
               Join our global congregation online. Every word spoken is a seed of righteousness making the Word real.
             </p>
             <div className="pt-6">
@@ -263,13 +267,13 @@ export default function HomePage() {
                 </h2>
               </div>
 
-              <div className="space-y-6 text-sm md:text-base font-light text-white/60 leading-relaxed max-w-xl italic">
+              <div className="space-y-6 text-base md:text-lg font-light text-white/90 leading-relaxed max-w-xl italic">
                 <p>
                   "Faith is the master key to living above the storms of life. I defined faith and how it can be built in the life of the believer... I also mentioned the enemies of faith and how to walk with God."
                 </p>
                 <div className="pt-6 border-l-2 border-primary pl-8">
-                  <p className="text-white font-bold tracking-[0.1em] text-xs uppercase opacity-80 mb-2">Forwarded by</p>
-                  <p className="text-2xl font-[family-name:var(--font-playfair)] text-white">Bishop Thomas Aremu</p>
+                  <p className="text-white font-bold tracking-[0.1em] text-[11px] uppercase opacity-90 mb-2">Forwarded by</p>
+                  <p className="text-3xl font-[family-name:var(--font-playfair)] text-white">Bishop Thomas Aremu</p>
                 </div>
               </div>
 
@@ -285,17 +289,17 @@ export default function HomePage() {
           <div className="max-w-7xl mx-auto flex flex-col lg:flex-row shadow-none overflow-hidden border border-border rounded-none">
             <div className="lg:w-1/2 p-12 lg:p-20 bg-foreground text-background space-y-12">
               <div className="space-y-4">
-                <h2 className="text-xs font-bold tracking-[0.6em] text-primary uppercase">PARTNERSHIP</h2>
-                <h3 className="text-4xl md:text-5xl font-black font-[family-name:var(--font-playfair)] leading-none tracking-tighter">
+                <h2 className="text-[11px] font-bold tracking-[0.6em] text-primary uppercase">PARTNERSHIP</h2>
+                <h3 className="text-4xl md:text-6xl font-black font-[family-name:var(--font-playfair)] leading-none tracking-tighter">
                   SUPPORT <br /> THE VISION.
                 </h3>
               </div>
-              <p className="text-sm font-light leading-relaxed opacity-70 max-w-sm">
+              <p className="text-base font-light leading-relaxed opacity-70 max-w-sm">
                 Join us in spreading the gospel and making an impact. Your generosity fuels the mission to draw nations to righteousness.
               </p>
               <Link
                 href="/giving"
-                className="inline-block bg-primary text-primary-foreground px-12 py-5 text-xs font-bold tracking-[0.3em] uppercase hover:bg-white hover:text-black transition-all duration-500 rounded-none shadow-xl shadow-primary/20"
+                className="inline-block bg-primary text-primary-foreground px-12 py-5 text-sm font-bold tracking-[0.3em] uppercase hover:bg-white hover:text-black transition-all duration-500 rounded-none shadow-xl shadow-primary/20"
               >
                 VIEW GIVING OPTIONS
               </Link>
@@ -305,16 +309,16 @@ export default function HomePage() {
               <h3 className="text-xs font-bold tracking-[0.6em] text-foreground uppercase border-b border-border pb-4">DIRECT TRANSFER</h3>
               <div className="space-y-8">
                 <div className="group">
-                  <p className="text-[10px] tracking-[0.4em] font-bold text-primary uppercase mb-1">BANK</p>
-                  <p className="text-3xl font-black font-[family-name:var(--font-playfair)] tracking-tight">UBA</p>
+                  <p className="text-[11px] tracking-[0.4em] font-bold text-primary uppercase mb-1">BANK</p>
+                  <p className="text-4xl font-black font-[family-name:var(--font-playfair)] tracking-tight">UBA</p>
                 </div>
                 <div className="group">
-                  <p className="text-[10px] tracking-[0.4em] font-bold text-primary uppercase mb-1">ACCOUNT NUMBER</p>
-                  <p className="text-4xl font-black font-[family-name:var(--font-playfair)] tracking-widest text-[#111]">1025194880</p>
+                  <p className="text-[11px] tracking-[0.4em] font-bold text-primary uppercase mb-1">ACCOUNT NUMBER</p>
+                  <p className="text-5xl font-black font-[family-name:var(--font-playfair)] tracking-widest text-foreground">1025194880</p>
                 </div>
                 <div className="group">
-                  <p className="text-[10px] tracking-[0.4em] font-bold text-primary uppercase mb-1">ACCOUNT NAME</p>
-                  <p className="text-sm font-bold tracking-widest uppercase opacity-80">Hephzibah Global Christian Center</p>
+                  <p className="text-[11px] tracking-[0.4em] font-bold text-primary uppercase mb-1">ACCOUNT NAME</p>
+                  <p className="text-base font-bold tracking-widest uppercase text-foreground">Hephzibah Global Christian Center</p>
                 </div>
               </div>
             </div>
@@ -333,7 +337,7 @@ export default function HomePage() {
               GOD'S <span className="italic text-primary">DELIGHT.</span>
             </h2>
           </div>
-          <p className="text-sm md:text-base font-light text-white/60 tracking-widest uppercase max-w-lg mx-auto leading-loose border-y border-white/10 py-6">
+          <p className="text-base md:text-lg font-light text-white/90 tracking-widest uppercase max-w-lg mx-auto leading-loose border-y border-white/10 py-6">
             JOIN US AS WE WALK TOGETHER IN FAITH TOWARDS THE BRIGHTNESS OF OUR RISING.
           </p>
           <div className="pt-8 flex justify-center flex-col sm:flex-row gap-6">

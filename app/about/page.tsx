@@ -16,29 +16,38 @@ export default function AboutPage() {
   return (
     <main className="bg-background">
       {/* Hero / History - The Narrative Pillar */}
-      <section className="relative pt-40 pb-32 overflow-hidden border-b border-border">
-        {/* Watermark */}
+      <section className="relative pt-40 pb-32 overflow-hidden border-b border-border min-h-[80vh] flex flex-col justify-center">
+        {/* Sacred Luminance Overlays */}
+        <div className="absolute inset-0 z-0">
+          <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+          <div className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-primary/20 to-transparent" />
+
+          {/* Radiant Light Beam */}
+          <div className="absolute top-0 left-[20%] w-[1px] h-full bg-gradient-to-b from-primary/0 via-primary/30 to-primary/0 blur-[1px] opacity-20" />
+        </div>
+
+        {/* Massive Watermark Typography */}
         <div className="absolute top-20 right-[-5%] pointer-events-none select-none z-0">
-          <h2 className="text-[20vw] font-black leading-none text-foreground/[0.03] tracking-tight uppercase whitespace-nowrap font-sans">
+          <h2 className="text-[20vw] font-black leading-none text-white/[0.04] tracking-tight uppercase whitespace-nowrap font-sans animate-slide-right">
             HISTORY
           </h2>
         </div>
 
         <div className="container mx-auto px-8 relative z-10">
           <div className="flex flex-col lg:flex-row gap-20 items-center">
-            <div className="w-full lg:w-1/2 space-y-12">
+            <div className="w-full lg:w-1/2 space-y-12 animate-in fade-in slide-in-from-left-10 duration-1000">
               <div className="space-y-4">
                 <div className="flex items-center gap-4">
-                  <span className="h-[1px] w-12 bg-primary" />
-                  <span className="text-xs font-bold tracking-[0.6em] text-primary uppercase">SINCE 2022</span>
+                  <span className="h-[1px] w-12 bg-primary shadow-[0_0_10px_rgba(var(--primary),0.5)]" />
+                  <span className="text-xs font-bold tracking-[0.6em] text-primary uppercase drop-shadow-sm">SINCE 2022</span>
                 </div>
-                <h1 className="text-5xl md:text-7xl font-black font-[family-name:var(--font-playfair)] tracking-tighter leading-none">
+                <h1 className="text-5xl md:text-7xl font-black font-[family-name:var(--font-playfair)] tracking-tighter leading-none [text-shadow:0_10px_30px_rgba(0,0,0,0.1)]">
                   THE RADIANCE <br />
-                  OF OUR RISING.
+                  <span className="italic text-primary drop-shadow-sm">OF OUR RISING.</span>
                 </h1>
               </div>
 
-              <div className="space-y-6 text-sm md:text-base font-light text-muted-foreground leading-relaxed">
+              <div className="space-y-6 text-base md:text-lg font-light text-muted-foreground leading-relaxed">
                 <p>
                   Hephzibah Global Christian Centre (HGCC) was birthed from a divine mandate given to <span className="text-foreground font-bold italic">Pastor Idoko Idu Idachaba</span>.
                   Inaugurated on <span className="text-primary font-bold tracking-widest">6TH AUGUST 2022</span>, we began as a small fire that has since grown into a global beacon of righteousness.
@@ -49,14 +58,15 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="w-full lg:w-1/2 relative group">
+            <div className="w-full lg:w-1/2 relative group animate-in fade-in slide-in-from-right-10 duration-1000 delay-300">
               <div className="absolute -inset-4 border border-primary/20 pointer-events-none group-hover:-inset-2 transition-all duration-700" />
-              <div className="relative overflow-hidden rounded-none border border-white/5 shadow-2xl">
+              <div className="relative overflow-hidden rounded-none border border-white/5 shadow-2xl bg-black">
                 <img
                   src="/pastor and congregation.jpg"
                   alt="HGCC Congregation"
-                  className="w-full h-auto grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105"
+                  className="w-full h-auto grayscale transition-all duration-1000 group-hover:grayscale-0 group-hover:scale-105 brightness-[0.8] group-hover:brightness-100"
                 />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60 pointer-events-none" />
               </div>
             </div>
           </div>
@@ -87,12 +97,12 @@ export default function AboutPage() {
                 <Target className="h-6 w-6" />
               </div>
               <div className="space-y-4">
-                <h3 className="text-xs font-bold tracking-[0.5em] text-primary uppercase">MISSION</h3>
-                <p className="text-sm font-light leading-relaxed text-white/60">
+                <h3 className="text-[11px] font-bold tracking-[0.5em] text-primary uppercase">MISSION</h3>
+                <p className="text-base font-light leading-relaxed text-white/80">
                   To impact the word, gift, and the spirit of faith on all the tribes of the earth through the knowledge of God given to us, subduing the kingdom of Satan and showing the world the way of salvation.
                 </p>
               </div>
-              <span className="text-[10px] font-bold tracking-[0.3em] text-white/40 uppercase">HEBREWS 11</span>
+              <span className="text-[10px] font-bold tracking-[0.3em] text-white/60 uppercase">HEBREWS 11</span>
             </div>
           </div>
         </div>
@@ -119,10 +129,10 @@ export default function AboutPage() {
               ].map((obj, i) => (
                 <div key={i} className="p-10 border border-border group hover:border-primary/50 transition-all duration-500">
                   <div className="flex items-center gap-4 mb-6">
-                    <span className="text-[10px] font-black text-primary/30 group-hover:text-primary transition-colors">0{i + 1}</span>
+                    <span className="text-[11px] font-black text-primary/30 group-hover:text-primary transition-colors">0{i + 1}</span>
                     <div className="h-[1px] w-8 bg-border group-hover:w-12 transition-all group-hover:bg-primary" />
                   </div>
-                  <p className="text-sm font-light leading-relaxed text-muted-foreground group-hover:text-foreground transition-colors">{obj}</p>
+                  <p className="text-base font-light leading-relaxed text-muted-foreground group-hover:text-foreground transition-colors">{obj}</p>
                 </div>
               ))}
             </div>
@@ -156,19 +166,19 @@ export default function AboutPage() {
                 </h3>
               </div>
 
-              <div className="space-y-6 text-sm md:text-base font-light text-white/50 leading-loose max-w-2xl">
+              <div className="space-y-6 text-base md:text-lg font-light text-white/80 leading-loose max-w-2xl">
                 <p>
                   Born with a mandate to empower believers, <span className="text-white font-bold">Pastor Idoko Idu Idachaba</span> has spent over two decades in faithful ministry.
                   His journey began in 1998, serving for 16 years with Living Faith Church Worldwide before being commissioned to lead HGCC.
                 </p>
                 <div className="grid grid-cols-2 gap-8 border-y border-white/10 py-10 my-10">
                   <div className="space-y-2">
-                    <p className="text-[10px] font-bold tracking-widest text-primary uppercase">ASSIGNMENT</p>
-                    <p className="text-xl font-bold font-[family-name:var(--font-playfair)]">Preaching Faith</p>
+                    <p className="text-[11px] font-bold tracking-widest text-primary uppercase">ASSIGNMENT</p>
+                    <p className="text-2xl font-bold font-[family-name:var(--font-playfair)]">Preaching Faith</p>
                   </div>
                   <div className="space-y-2">
-                    <p className="text-[10px] font-bold tracking-widest text-primary uppercase">RESTORATION</p>
-                    <p className="text-xl font-bold font-[family-name:var(--font-playfair)]">Empowering Lives</p>
+                    <p className="text-[11px] font-bold tracking-widest text-primary uppercase">RESTORATION</p>
+                    <p className="text-2xl font-bold font-[family-name:var(--font-playfair)]">Empowering Lives</p>
                   </div>
                 </div>
                 <p>
