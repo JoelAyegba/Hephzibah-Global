@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.beulahwalkofhopefoundation.org
+
+# Sitemaps
+Sitemap: https://www.beulahwalkofhopefoundation.org/sitemap.xml
