@@ -319,24 +319,24 @@ export default function HomePage() {
                   <p className="text-[11px] tracking-[0.4em] font-bold text-primary uppercase mb-1">BANK</p>
                   <p className="text-4xl font-black font-[family-name:var(--font-playfair)] tracking-tight">UBA</p>
                 </div>
-                <div className="group flex justify-between items-end relative z-20">
+                <div className="group flex flex-col gap-4 relative z-20">
                   <div className="relative">
                     <p className="text-[11px] tracking-[0.4em] font-bold text-primary uppercase mb-1">ACCOUNT NUMBER</p>
-                    <p className="text-5xl font-black font-[family-name:var(--font-playfair)] tracking-widest text-foreground relative z-10">1025194880</p>
+                    <p className="text-3xl md:text-5xl font-black font-[family-name:var(--font-playfair)] tracking-wider md:tracking-widest text-foreground relative z-10">1025194880</p>
                   </div>
                   <button
                     onClick={() => handleCopy("1025194880")}
-                    className="flex items-center gap-2 text-[12px] font-black tracking-[0.2em] text-primary uppercase hover:text-foreground transition-all duration-300 group/copy pb-2 relative z-30 cursor-pointer hover:scale-105"
+                    className="flex items-center gap-2 text-xs font-black tracking-[0.2em] text-primary uppercase hover:text-foreground transition-all duration-300 group/copy py-3 px-4 border border-primary/30 hover:border-primary hover:bg-primary/5 relative z-30 cursor-pointer w-fit"
                   >
                     {copiedValue === "1025194880" ? (
                       <>
                         <Check className="h-4 w-4" />
-                        <span className="drop-shadow-sm">COPIED</span>
+                        <span>COPIED</span>
                       </>
                     ) : (
                       <>
-                        <Copy className="h-4 w-4 group-hover/copy:scale-110 transition-transform" />
-                        <span className="drop-shadow-sm">COPY</span>
+                        <Copy className="h-4 w-4" />
+                        <span>COPY NUMBER</span>
                       </>
                     )}
                   </button>
