@@ -319,24 +319,24 @@ export default function HomePage() {
                   <p className="text-[11px] tracking-[0.4em] font-bold text-primary uppercase mb-1">BANK</p>
                   <p className="text-4xl font-black font-[family-name:var(--font-playfair)] tracking-tight">UBA</p>
                 </div>
-                <div className="group flex justify-between items-end">
-                  <div>
+                <div className="group flex justify-between items-end relative z-20">
+                  <div className="relative">
                     <p className="text-[11px] tracking-[0.4em] font-bold text-primary uppercase mb-1">ACCOUNT NUMBER</p>
-                    <p className="text-5xl font-black font-[family-name:var(--font-playfair)] tracking-widest text-foreground">1025194880</p>
+                    <p className="text-5xl font-black font-[family-name:var(--font-playfair)] tracking-widest text-foreground relative z-10">1025194880</p>
                   </div>
                   <button
                     onClick={() => handleCopy("1025194880")}
-                    className="flex items-center gap-2 text-[11px] font-bold tracking-widest text-primary uppercase hover:text-foreground transition-colors group/copy pb-1"
+                    className="flex items-center gap-2 text-[12px] font-black tracking-[0.2em] text-primary uppercase hover:text-foreground transition-all duration-300 group/copy pb-2 relative z-30 cursor-pointer hover:scale-105"
                   >
                     {copiedValue === "1025194880" ? (
                       <>
-                        <Check className="h-3 w-3" />
-                        <span>COPIED</span>
+                        <Check className="h-4 w-4" />
+                        <span className="drop-shadow-sm">COPIED</span>
                       </>
                     ) : (
                       <>
-                        <Copy className="h-3 w-3 group-hover/copy:scale-110 transition-transform" />
-                        <span>COPY</span>
+                        <Copy className="h-4 w-4 group-hover/copy:scale-110 transition-transform" />
+                        <span className="drop-shadow-sm">COPY</span>
                       </>
                     )}
                   </button>
