@@ -39,6 +39,7 @@ export default function HomePage() {
       {/* Hero Section */}
       <section className="relative min-h-[600px] flex items-center justify-center overflow-hidden">
         <Carousel
+          // @ts-ignore
           plugins={[plugin.current]}
           className="w-full h-full absolute inset-0 z-0"
           onMouseEnter={plugin.current.stop}
